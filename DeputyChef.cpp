@@ -1,41 +1,56 @@
 #include <iostream>
+
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() 
-{
-    int t,s,i,maxi=0;
-    cin>>t;
-    while(t--)
-    {
-        cin>>s;
-        int a[s],b[s],x[s];
-        for(i=0;i<s;i++)
-            {
-                cin>>a[i];
-                x[i]=0;
-            }
-        for(i=0;i<s;i++)
-            cin>>b[i];
-        maxi=-1;
-        for(i=1;i<s-1;i++)
-        {
-            if((b[i]>a[i-1]+a[i+1]))
-            x[i]=1;
-        }
-        if(b[0]>a[s-1]+a[1])
-        x[0]=1;
-        if(b[s-1]>a[s-2]+a[0])
-        x[s-1]=1;
-        for(i=0;i<s;i++)
-        {
-            if(x[i]==1)
-            {
-                if(maxi<b[i])
-                maxi=b[i];
-            }
-        }
-        cout<<maxi<<"\n";
-        
-    }
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    int d[n];
+	    for(int i=0;i<n;i++)
+	    {
+	    	cin>>a[i];
+		}
+		for(int i=0;i<n;i++)
+	    {
+	    	cin>>d[i];
+		}
+		int res=0;
+		for(int i=0;i<n;i++)
+		{
+			int right=a[(i+1)%n];
+			int left;
+			if(i==0)
+			{
+				left=a[n-1];
+				
+			}
+			else
+			{
+				left=a[i-1];	
+			}
+		  int a_power=left+right;
+		  
+		  if(a_power<d[i])
+		  {
+		  	
+		  	res=max(res,d[i]);
+		  }
+			
+		}
+		if(res!=0)
+		{
+			cout<<res<<"\n";	
+		}
+		else
+		{
+	   cout<<"-1"<<"\n";
+		}
+	}
 	return 0;
 }
