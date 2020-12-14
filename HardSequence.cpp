@@ -4,7 +4,7 @@ int main()
 {
 	int t;
 	cin>>t;
-	int x[t];
+	
 	for(int i=0;i<t;i++)
 	{
 		int n;
@@ -36,8 +36,8 @@ int main()
 			if(s[j]==x1)
 			count++;
 		}
-		x[i]=count;
+		cout<<count<<endl;
 	}
-	for(int i=0;i<t;i++)
-	cout<<x[i]<<endl;
+	
+ return 0;
 }
