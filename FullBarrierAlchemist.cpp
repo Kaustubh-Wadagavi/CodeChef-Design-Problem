@@ -1,24 +1,60 @@
-#include<iostream>
+
+#include <iostream>
 using namespace std;
-int arr[1001], types[1001];
-int main()
+
+int main() 
 {
-    int T; cin>>T;
-    while(T--)
-    {
-        int N,H, Y1, Y2, L; cin>>N>>H>>Y1>>Y2>>L;
-        int count=0;
-        for(int i=0; i<N; i++) cin>>types[i]>>arr[i];
-        for(int i=0; i<N; i++)
-        {
-            if(types[i]==1 && arr[i]<H-Y1)
-                --L;
-            else if(types[i]==2 && arr[i]>Y2)
-                --L;
-            if(L==0) break;
-            ++count;
-        }
-        cout<<count<<"\n";
-    }
-    return 0;
+
+	int t;
+	cin>>t;
+	while(t)
+	{
+	    int n,h,y1,y2,l,b=0,i;
+	    cin>>n>>h>>y1>>y2>>l;
+	    int x[n],type[n];
+	    for(i=0;i<n;i++)
+	    {
+	        cin>>type[i]>>x[i];
+	    }
+	    for(i=0;i<n;i++)
+	    {
+	        if(type[i]==1)
+	        {
+	            if((h-y1)<=x[i])
+	            {
+	                b++;
+	            }
+	            else
+	            {
+	                if(l>1)
+	                {
+	                    l--;
+	                    b++;
+	                }
+	                else
+	                break;
+	            }
+	        }
+	        else
+	        {
+	            if(y2>=x[i])
+	            {
+	                b++;
+	            }
+	            else 
+	            {
+	                if(l>1)
+	                {
+	                    l--;
+	                    b++;
+	                }
+	                else
+	                break;
+	            }
+	        }
+	    }
+	    cout<<b<<endl;
+	    t--;
+	}
+	return 0;
 }
